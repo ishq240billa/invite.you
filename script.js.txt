@@ -1,0 +1,7 @@
+function showEnvelope() {
+    let name = document.getElementById("nameInput").value;
+    document.getElementById("nameDisplay").innerText = name;
+
+    let envelope = document.getElementById("envelope");
+    envelope.classList.add("open");
+}

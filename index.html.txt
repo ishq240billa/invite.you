@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعوة</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <!-- Input -->
+    <div class="form-box">
+        <input type="text" id="nameInput" placeholder="اكتب اسمك">
+        <button onclick="showEnvelope()">عرض الدعوة</button>
+    </div>
+
+    <!-- Envelope -->
+    <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="body">
+            <h2 id="nameDisplay"></h2>
+        </div>
+
+        <!-- Card -->
+        <div class="card">
+            <img src="card.png" alt="Invitation">
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
