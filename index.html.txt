@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শুভ গৃহপ্রবেশ - রাজকীয় নিমন্ত্রণপত্র</title>
+    <!-- Executive/Premium Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-cream: #faf6ee;
+            --gold-metallic: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            --gold-solid: #b38728;
+            --dark-official: #111e16; /* Deep presidential/formal green */
+            --vintage-envelope: #c3b49f;
+            --vintage-dark-fold: #a3937d;
+            --shadow-3d: 0 30px 60px rgba(0,0,0,0.18), 0 12px 18px rgba(0,0,0,0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            /* Ultra-premium seamless low-contrast formal damask/floral pattern */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 15c-2-5-7-9-13-9 0 7 4 13 9 15-5 2-9 7-9 13 7 0 13-4 15-9 2 5 7 9 13 9 0-7-4-13-9-15 5-2 9-7 9-13-7 0-13 4-15 9z' fill='%23b38728' fill-opacity='0.03'/%3E%3C/svg%3E");
+            font-family: 'Hind Siliguri', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1400px;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .hidden { display: none !important; }
+
+        /* --- PAGE 1: OFFICIAL ENTRY --- */
+        .gate-wrapper {
+            width: 90%;
+            max-width: 460px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: elegantFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 10;
+        }
+
+        .arabic-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--dark-official);
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .arabic-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--gold-metallic);
+        }
+
+        .islamic-emblem {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 45px;
+            color: var(--gold-solid);
+            filter: drop-shadow(0 2px 5px rgba(179,135,40,0.2));
+        }
+
+        .form-container {
+            width: 100%;
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 2px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(179, 135, 40, 0.15);
+        }
+
+        .input-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #777;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .name-field {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+            font-size: 1.1rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            color: var(--dark-official);
+            font-weight: 500;
+            margin-bottom: 20px;
+            border-radius: 0;
+        }
+
+        .name-field:focus {
+            border-color: var(--gold-solid);
+            background: #fff;
+            box-shadow: 0 0 10px rgba(179, 135, 40, 0.1);
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--dark-official);
+            color: #fff;
+            border: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .action-button:hover {
+            background: #1a2f22;
+            letter-spacing: 3px;
+        }
+
+        /* --- PAGE 2: 3D UNBOXING SUITE --- */
+        .presentation-space {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .status-emojis {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            letter-spacing: 12px;
+            opacity: 0.85;
+            animation: microFloat 4s ease-in-out infinite;
+        }
+
+        /* 3D Envelope Rigging */
+        .stage-3d {
+            width: 100%;
+            max-width: 520px;
+            height: 380px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease-out;
+        }
+
+        .stage-3d:hover {
+            transform: rotateX(5deg) rotateY(-2deg);
+        }
+
+        .envelope-3d {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--vintage-envelope);
+            border-radius: 4px;
+            box-shadow: var(--shadow-3d);
+            transform-style: preserve-3d;
+        }
+
+        /* 3D Shading Panels for Real Folds */
+        .env-body-shade {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.08) 0%, transparent 40%);
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .envelope-flap-3d {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 52%;
+            background: var(--vintage-dark-fold);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transform: rotateX(0deg);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* The Round Wax Seal Trigger */
+        .wax-seal {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 42px;
+            height: 42px;
+            background: radial-gradient(circle, #b83b31 0%, #8a251e 100%);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 6;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .wax-seal:hover {
+            transform: translate(-50%, -50%) scale(1.12);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Digital Script Label */
+        .outer-inscription {
+            position: absolute;
+            width: 100%;
+            bottom: 25%;
+            text-align: center;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .inscription-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #6e6150;
+            margin-bottom: 5px;
+        }
+
+        .guest-name-luxury {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.2rem;
+            color: var(--dark-official);
+            font-weight: 600;
+        }
+
+        /* --- THE INVITATION CARD (Sliding Interior Architecture) --- */
+        .premium-card-interior {
+            position: absolute;
+            width: 94%;
+            height: 92%;
+            top: 4%;
+            left: 3%;
+            background: #ffffff;
+            border: 1px solid var(--gold-solid);
+            padding: 35px 25px;
+            text-align: center;
+            transform: translateY(0) translateZ(-10px) scale(0.95);
+            opacity: 0;
+            z-index: 1;
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow-y: auto;
+            box-shadow: inset 0 0 0 1px rgba(179,135,40,0.2);
+        }
+
+        /* 3D Execution Global State Modifiers */
+        .stage-3d.unboxed .envelope-flap-3d {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .stage-3d.unboxed .wax-seal {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .stage-3d.unboxed .premium-card-interior {
+            opacity: 1;
+            transform: translateY(-90px) translateZ(80px) scale(1.05);
+            z-index: 20;
+            height: auto;
+            min-height: 520px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+        }
+
+        /* Card Content Text Settings (Verbatim Text) */
+        .bengali-welcome {
+            color: #5c4912;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .bengali-wishes {
+            color: #6e5611;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .metallic-divider {
+            color: var(--gold-solid);
+            font-size: 1.4rem;
+            margin: 15px 0;
+            letter-spacing: 3px;
+        }
+
+        .manifest-box {
+            background: rgba(179, 135, 40, 0.05);
+            border-top: 1px solid rgba(179,135,40,0.2);
+            border-bottom: 1px solid rgba(179,135,40,0.2);
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .manifest-title {
+            font-size: 0.85rem;
+            color: #8c7026;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .manifest-data {
+            font-size: 1.35rem;
+            color: var(--dark-official);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .manifest-data:last-child { margin-bottom: 0; }
+
+        .signature-area {
+            font-size: 1.15rem;
+            color: #544312;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .signature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-official);
+            margin-top: 6px;
+        }
+
+        /* Interpolated Frame Animations */
+        @keyframes elegantFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes microFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- STAGE 1: PORTAL IDENTIFICATION CONCIERGE -->
+    <div class="gate-wrapper" id="portalStage">
+        <div class="arabic-header">اَلسَّلَامُ عَلَيْكُمْ</div>
+        
+        <!-- Minimal Luxury Geometric Silhouette -->
+        <svg class="islamic-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 01-9-9c0-1.8.52-3.48 1.42-4.9A9 9 0 0112 3m0 18a9 9 0 009-9c0-1.8-.52-3.48-1.42-4.9A9 9 0 0012 3m0 18V3" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8a4 4 0 100 8 4 4 0 000-8z" />
+        </svg>
+
+        <div class="form-container">
+            <div class="input-label">Secure Access Verification</div>
+            <input type="text" id="nameVerification" class="name-field" placeholder="Enter Your Name" required autocomplete="off">
+            <button type="button" class="action-button" onclick="verifyAndProceed()">SUBMIT</button>
+        </div>
+    </div>
+
+    <!-- STAGE 2: LUXURY 3D MECHANICAL ENVIRONMENT -->
+    <div class="presentation-space hidden" id="exhibitionStage">
+        <div class="status-emojis">✨ 🤲 🏡 ✨</div>
+
+        <div class="stage-3d" id="envelopeRig">
+            <div class="envelope-3d">
+                <div class="env-body-shade"></div>
+                
+                <div class="envelope-flap-3d">
+                    <!-- Dynamic Trigger Mechanism positioned exactly at center-point edge -->
+                    <div class="wax-seal" onclick="execute3DUnboxing(event)"></div>
+                </div>
+                
+                <div class="outer-inscription">
+                    <div class="inscription-tag">EXCLUSIVELY PRESENTED TO</div>
+                    <div class="guest-name-luxury" id="insertedName">Guest</div>
+                </div>
+
+                <!-- Realistic Hidden Slotted Interior Premium Invitation Card -->
+                <div class="premium-card-interior">
+                    <p class="bengali-welcome">
+                        পরম আনন্দের সাথে জানাচ্ছি যে, আমাদের ছোট স্বপ্নের নতুন গৃহের শুভ সূচনা উপলক্ষে এই বিশেষ দিনে আপনার স্নেহময় উপস্থিতি একান্তভাবে কাম্য।
+                    </p>
+                    <p class="bengali-wishes">
+                        আপনার আগমন আমাদের এই আয়োজনকে আরও আনন্দময় ও স্মরণীয় করে তুলবে—এই প্রত্যাশাই রইল।
+                    </p>
+                    
+                    <div class="metallic-divider">✦ ❖ ✦</div>
+                    
+                    <div class="manifest-box">
+                        <div class="manifest-title">অনুষ্ঠান</div>
+                        <div class="manifest-data">গৃহপ্রবেশ</div>
+                        
+                        <div class="manifest-title">তারিখ</div>
+                        <div class="manifest-data">৪ঠা জুলাই</div>
+                        
+                        <div class="manifest-title">স্থান</div>
+                        <div class="manifest-data">নিজ বাসভবন</div>
+                    </div>
+                    
+                    <div class="metallic-divider">❖</div>
+                    
+                    <div class="signature-area">
+                        ইতি,<br>
+                        <span class="signature-title">সাহান আহমেদ সরদার</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Access Controller Logic
+        function verifyAndProceed() {
+            const parsedName = document.getElementById('nameVerification').value.trim();
+            if(!parsedName) {
+                alert("Access Denied: Formal identification requires a name.");
+                return;
+            }
+            
+            document.getElementById('insertedName').innerText = parsedName;
+            document.getElementById('portalStage').classList.add('hidden');
+            document.getElementById('exhibitionStage').classList.remove('hidden');
+        }
+
+        // --- HIGH VELOCITY PARTY POPPER SIMULATION ---
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particleArray = [];
+
+        function setViewport() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', setViewport);
+        setViewport();
+
+        class ExecutiveParticle {
+            constructor(originX, originY) {
+                this.x = originX;
+                this.y = originY;
+                const palette = ['#bf953f', '#b38728', '#111e16', '#de4437', '#2a754d', '#4285f4', '#ffffff'];
+                this.color = palette[Math.floor(Math.random() * palette.length)];
+                this.dimensions = Math.random() * 8 + 4;
+                
+                // Pure 360-degree radical directional velocity computation
+                const trajectoryAngle = Math.random() * Math.PI * 2;
+                const force = Math.random() * 15 + 8;
+                this.vx = Math.cos(trajectoryAngle) * force;
+                this.vy = Math.sin(trajectoryAngle) * force;
+                this.downwardPull = 0.28;
+                this.alpha = 1;
+                this.fadingRate = Math.random() * 0.012 + 0.008;
+            }
+            process() {
+                this.vy += this.downwardPull;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= this.fadingRate;
+            }
+            render() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.dimensions, this.dimensions);
+                ctx.restore();
+            }
+        }
+
+        function generateConcentricBurst(x, y) {
+            for(let i=0; i<180; i++) {
+                particleArray.push(new ExecutiveParticle(x, y));
+            }
+        }
+
+        function executionLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particleArray = particleArray.filter(item => item.alpha > 0);
+            particleArray.forEach(item => {
+                item.process();
+                item.render();
+            });
+            if(particleArray.length > 0) {
+                requestAnimationFrame(executionLoop);
+            }
+        }
+
+        // 3D Presentation Interaction Script
+        function execute3DUnboxing(event) {
+            event.stopPropagation();
+            
+            // Calculate pixel precise anchor point for the blast vectors from the physical seal center
+            const boundary = event.target.getBoundingClientRect();
+            const anchorX = boundary.left + boundary.width / 2;
+            const anchorY = boundary.top + boundary.height / 2;
+
+            // Trigger mechanical classes
+            document.getElementById('envelopeRig').classList.add('unboxed');
+
+            // Initialize particle burst sequence
+            generateConcentricBurst(anchorX, anchorY);
+            executionLoop();
+        }
+    </script>
+</body>
+</html>
